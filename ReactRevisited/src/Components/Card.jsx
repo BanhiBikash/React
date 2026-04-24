@@ -1,10 +1,11 @@
 import React from "react";
 
-function Card(){
+function Card(props){
     return  <div className="card">
-                <p className="title">Name</p>
-                <p className="Desc">This is description of that person</p>
-                <p className="exp">His experience</p>
+                <img src={props.imageLink} />
+                <p className="title">{props.name}</p>
+                <p className="Desc">{props.desc}</p>
+                <p className="exp">{props.exp} years</p>
             </div>
 }
 
