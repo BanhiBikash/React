@@ -1,5 +1,5 @@
 import Card from "./Components/Card"
-import Navbar from "./Navbar"
+import Navbar from "./Components/Navbar"
 import Data from "./assets/Data.json"
 
 export const App =  () => {
