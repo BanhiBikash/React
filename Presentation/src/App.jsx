@@ -1,9 +1,11 @@
-import './App.css'
+import {Section1} from "./Components/Section1/Section1"
+import {Section2} from "./Components/Section2/Section2"
 
 function App(){
   return(
     <>
-      <h1>This is React tutorial</h1>
+    <Section1/>
+    <Section2 />
     </>
   )
 }

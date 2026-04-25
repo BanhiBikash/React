@@ -1,3 +1,133 @@
+/* @import "tailwindcss"; */
+
 body{
+    width: 100vw;
+    overflow-x: hidden ;
+}
+.section1{
+    height:100vh;
+    width: 100vw;
+}
+.section2{
+    height:100vh;
+    width: 100vw;
+    background-color:rgb(154, 34, 34);
+    color: wheat;
+}
+
+/* Navbar container */
+.flex {
+  display: flex;
+  justify-content: space-between; /* button left, text right */
+  align-items: center;
+  width: 95vw;
+  padding: 1rem 2rem;
+  background-color: white; /* white background */
+}
+
+/* Button styling */
+.flex button {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 999px; /* pill shape */
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.flex button:hover {
+  background-color: #333; /* slightly lighter black on hover */
+}
+
+/* Text styling */
+.nav-text {
+  color: black;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.center-content{
+  display: flex;
+}
+
+/* Container for the left section */
+.left-content {
+  width: 40%;              /* take about 40% of the row */
+  padding: 2rem;
+  background-color: #ffffff;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 400px ;
+}
+
+/* Subtitle */
+.left-content h3 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+/* Description text */
+.left-content p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 260px;
+  height: 480px ;
+  margin: auto 5px ;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* .card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5); /* 50% black tint */
+  z-index: 0;
+} */
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+}
+
+/* Title */
+.card h4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
   color: #111;
+  background-color: dodgerblue;
+  border-radius: 8px;
+  padding: 8px 15px;
+}
+
+/* Description */
+.card p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #ffffff;
+  font-weight: bold;
 }
