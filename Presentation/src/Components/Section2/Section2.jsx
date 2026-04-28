@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import axios from 'axios'
 
 export const Section2 = () => {
 
@@ -37,6 +38,17 @@ export const Section2 = () => {
       setformData({"personName":"","age":0})
   }
 
+  //fetch data from api
+  const fetchData = async()=>{
+    // const response = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+    // const jsonResponse = await response.json()
+    // console.log(jsonResponse)
+
+    const response = await axios.get('https://jsonplaceholder.typicode.com/todos/1') 
+    const {data} = response
+    console.log(data)
+  }
+
   return (
     <div className='section2' >
       <form onSubmit={function(event){submitHandler(event)}} className="demo-form">
@@ -46,6 +58,7 @@ export const Section2 = () => {
         <input type="number" name="age" id="name-Age" placeholder='Enter Age' value={formData.age} onChange={(event)=>{formDataChange(event)}}/>
         <button type="submit">Submit</button>
       </form>
+      <button onClick={fetchData}>Fetch Data</button>
     </div>
   )
 }
