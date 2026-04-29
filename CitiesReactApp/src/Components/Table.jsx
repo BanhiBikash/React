@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import TableRow from "./TableRow";
 import citiesService from "../services/api";
+import PostCityDialogBox from "./PostCityDialogBox";
 
 function CityTable(prop) {
 
     const [tableData, setTableData] = React.useState([])
+    const [postDialog, setPostDialog] = React.useState(null)
 
     //render the data
     const renderData = (data) => {
@@ -37,7 +39,7 @@ function CityTable(prop) {
     }
 
     //edit
-    const edit = async()=>{
+    const edit = async(id,userData)=>{
     }
 
     //delete by ID
@@ -73,8 +75,14 @@ function CityTable(prop) {
         }
     }
 
+    const addCity = ()=>{
+        console.log("open post")
+        setPostDialog({type:"post", cityData:{cityId:"",cityName:""}})
+    }
+
     return (
         <div className="city-table-container">
+            <button className='buttonEnLarge' onClick={addCity}>Add City</button>
             <table className="city-table">
                 <thead>
                     <tr>
@@ -87,36 +95,11 @@ function CityTable(prop) {
                     {tableData.map(function (city) { return (<TableRow cityId={city.cityId} cityName={city.cityName} getByID={getByID} edit={edit} deleteByID={deleteByID} />) })}
                 </tbody>
             </table>
+            {/* PostCity-DialogBox */}
+            {postDialog && <PostCityDialogBox renderData={renderData} type={postDialog.type} cityData={postDialog.cityData} setPostDialog={setPostDialog} />}
         </div>
     );
 }
 
 export default CityTable;
 
-
-
-
-    // const deleteByID = async (id) => {
-    //     const response = await citiesService.getByID(id);
-
-    //     if (!response) {
-    //         setDialogConfig({
-    //             message: "City not found!",
-    //             type: "notfound",
-    //             onCancel: () => setDialogConfig(null)
-    //         });
-    //     } else {
-    //         setDialogConfig({
-    //             message: "Are you sure you want to delete this city?",
-    //             type: "confirm",
-    //             onConfirm: async () => {
-    //                 await citiesService.deleteByID(id);
-    //                 setDialogConfig(null);
-    //                 // refresh table data
-    //                 const data = await citiesService.getAll();
-    //                 setTableData(data);
-    //             },
-    //             onCancel: () => setDialogConfig(null)
-    //         });
-    //     }
-    // };
