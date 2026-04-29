@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import citiesService from "../services/api";
 
 function CityTable() {
 
@@ -10,7 +11,7 @@ function CityTable() {
 
             try {
                 console.log('fetching...')
-                const response = await axios.get("https://localhost:5003/api/v1/cities");
+                const response = await citiesService.getAll();
                 setTableData(response.data);
             } catch (e) {
                 console.error("Error fetching data:", e);
