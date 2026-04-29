@@ -9,7 +9,7 @@ const TableRow = (props) => {
             <td>
                 <button onClick={function(){props.getByID(props.cityId)}} className='buttonEnLarge'>Enlarge</button>
                 <button onClick={function(){props.edit()}} className='buttonEdit'>Edit</button>
-                <button onClick={function(){props.deleteByID()}} className='buttonDelete'>Delete</button>
+                <button onClick={function(){props.deleteByID(props.cityId)}} className='buttonDelete'>Delete</button>
             </td>
         </tr>
     )

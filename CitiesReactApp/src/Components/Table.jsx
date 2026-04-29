@@ -3,7 +3,7 @@ import axios from "axios";
 import TableRow from "./TableRow";
 import citiesService from "../services/api";
 
-function CityTable() {
+function CityTable(prop) {
 
     const [tableData, setTableData] = React.useState([])
 
@@ -41,8 +41,36 @@ function CityTable() {
     }
 
     //delete by ID
-    const deleteByID = async()=>{
+    const deleteByID = async(id)=>{
+        const response = await citiesService.getByID(id)
 
+        if(response.data==null) //No city data found
+        {
+            console.log("city not found")
+            
+            prop.setDialogConfig({message:"City not found!", type:"notfound", onCancel:()=>{prop.setDialogConfig(null)}})
+
+        }
+        else    //City Data found, delete WARNING!
+        {
+            console.log("confirm!")
+            prop.setDialogConfig({message:"Are you sure you want to delete this city?", type:"confirm",
+                onCancel:()=>{prop.setDialogConfig(null)},
+                onConfirm:async ()=>{
+                    await citiesService.deleteByID(id)
+
+                    //check if deleted
+                    const response  = await citiesService.getByID(id)
+                    if(response.data==null){    //city deleted
+                        prop.setDialogConfig({message:"City successfully deleted", type:"notfound", onCancel:()=>{prop.setDialogConfig(null)}})
+                        const reloadResponse = await citiesService.getAll();
+                        renderData(reloadResponse.data)
+                    }else{    //city not deleted
+                        prop.setDialogConfig({message:"City not deleted", type:"notfound", onCancel:()=>{prop.setDialogConfig(null)}})
+                    }
+                }
+            })
+        }
     }
 
     return (
@@ -64,3 +92,31 @@ function CityTable() {
 }
 
 export default CityTable;
+
+
+
+
+    // const deleteByID = async (id) => {
+    //     const response = await citiesService.getByID(id);
+
+    //     if (!response) {
+    //         setDialogConfig({
+    //             message: "City not found!",
+    //             type: "notfound",
+    //             onCancel: () => setDialogConfig(null)
+    //         });
+    //     } else {
+    //         setDialogConfig({
+    //             message: "Are you sure you want to delete this city?",
+    //             type: "confirm",
+    //             onConfirm: async () => {
+    //                 await citiesService.deleteByID(id);
+    //                 setDialogConfig(null);
+    //                 // refresh table data
+    //                 const data = await citiesService.getAll();
+    //                 setTableData(data);
+    //             },
+    //             onCancel: () => setDialogConfig(null)
+    //         });
+    //     }
+    // };
