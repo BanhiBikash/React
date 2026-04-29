@@ -9,11 +9,11 @@ const apiClient = axios.create({baseURL: API_BASE_URL,
 })
 
 const citiesService = {
-    getAll : async ()=>{await apiClient.get("v1/cities")},
-    getByID : async(id)=>{await apiClient.get("v1/cities/"+id)},
-    postData : async({formData})=>{await apiClient.post("v1/cities",formData)},
-    deleteByID : async(id)=>{await apiClient.delete("v1/cities/"+id)},
-    putByID: async(id,cityData)=>{await apiClient.patch("v1/cities/"+id,cityData)}
+    getAll : async ()=>{const response = await apiClient.get("v1/cities"); return response},
+    getByID : async(id)=>{const response = await apiClient.get("v1/cities/"+id); return response},
+    postData : async({formData})=>{const response = await apiClient.post("v1/cities",formData); return response},
+    deleteByID : async(id)=>{const response = await apiClient.delete("v1/cities/"+id); return response},
+    putByID: async(id,cityData)=>{const response = await apiClient.patch("v1/cities/"+id,cityData); return response}
 }
 
 export default citiesService

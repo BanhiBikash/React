@@ -69,3 +69,48 @@ body {
 .city-table tr:hover {
   background-color: #333;
 }
+
+/* Base button style */
+button {
+  padding: 8px 14px;
+  margin: 0 6px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Enlarge button */
+.buttonEnLarge {
+  background-color: #007bff; /* blue */
+  color: #fff;
+}
+
+.buttonEnLarge:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Edit button */
+.buttonEdit {
+  background-color: #ffc107; /* amber/yellow */
+  color: #000;
+}
+
+.buttonEdit:hover {
+  background-color: #e0a800;
+  transform: scale(1.05);
+}
+
+/* Delete button */
+.buttonDelete {
+  background-color: #dc3545; /* red */
+  color: #fff;
+}
+
+.buttonDelete:hover {
+  background-color: #a71d2a;
+  transform: scale(1.05);
+}
+
