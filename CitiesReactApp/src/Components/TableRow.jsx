@@ -8,7 +8,7 @@ const TableRow = (props) => {
             <td>{props.cityName}</td>
             <td>
                 <button onClick={function(){props.getByID(props.cityId)}} className='buttonEnLarge'>Enlarge</button>
-                <button onClick={function(){props.edit(props.cityId,new {cityId:props.cityId, cityName:props.cityName})}} className='buttonEdit'>Edit</button>
+                <button onClick={function(){props.edit(props.cityId,props.cityName)}} className='buttonEdit'>Edit</button>
                 <button onClick={function(){props.deleteByID(props.cityId)}} className='buttonDelete'>Delete</button>
             </td>
         </tr>

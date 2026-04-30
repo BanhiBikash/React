@@ -30,11 +30,15 @@ const PostCityDialogBox = (props) => {
       event.preventDefault();
         console.log("posting")
         const response  = await citiesService.postData(formData)
-     
-        if(!response.success){
+      console.log(response)
+        if(response.status!=201){
+            //close dialog box -post
+            props.setPostDialog(null)
             setDialogConfig({message:"Failed to add city!", type:"notfound", onCancel:()=>{setDialogConfig(null)}})
         }else{
-            setDialogConfig({message:"Successfully added city!", type:"notfound", onCancel:()=>{setDialogConfig(null)}})
+            console.log("city added")
+            props.setPostDialog(null)
+            setDialogConfig({message:"City Added",type:"notfound", onCancel:()=>{setDialogConfig(null)}})
         }
     }
 
