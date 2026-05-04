@@ -1,11 +1,30 @@
-function NavBar() {
+function NavBar(props) {
+  console.log(props.token)
+  const openRegister = () => {
+    console.log("open")
+    props.setRegister(true)
+  }
+
+  const openLogin = ()=>{
+    console.log("open login")
+    props.setLogin(true)
+  }
+
+  const logOut = async()=>{
+    localStorage.removeItem("token")
+    props.setToken(null)
+  }
+
   return (
       <div className='navbar'>
           <a className='app-logo'>Cities</a>
 
           <div className='pagelinks'>
-            <a>Page 1</a>
-            <a>Page 2</a>
+            {!props.token?<>
+            <button onClick={openRegister} >Register</button>
+            <button onClick={openLogin} >Login</button></>:
+            <button onClick={logOut}>Logout</button>
+            }
           </div>
       </div>
   )

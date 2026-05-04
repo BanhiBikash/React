@@ -19,6 +19,7 @@ function CityTable(prop) {
 
     //data fetch
     const fetchData = async () => {
+        localStorage.getItem("token")?console.log("loggedin"):console.log("loggedout")
         try {
             console.log('fetching...')
             const response = await citiesService.getAll();

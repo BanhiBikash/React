@@ -1,6 +1,6 @@
 /* Global body styles */
 body {
-  background-color: #000; /* black background */
+  background-color: #000;
   margin: 0;
   padding: 20px;
   font-family: Arial, sans-serif;
@@ -12,7 +12,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #111; /* slightly lighter than body for contrast */
+  background-color: #111;
   padding: 12px 24px;
 }
 
@@ -23,22 +23,27 @@ body {
   text-decoration: none;
 }
 
+.pagelinks button,
 .pagelinks a {
   margin-left: 20px;
+  background: none;
+  border: none;
   color: #ccc;
-  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
   transition: color 0.3s ease;
 }
 
+.pagelinks button:hover,
 .pagelinks a:hover {
-  color: #fff; /* highlight on hover */
+  color: #fff;
 }
 
 /* Table container */
 .city-table-container {
   display: flex;
   justify-content: center;
-  margin-top: 40px; /* more spacing below navbar */
+  margin-top: 40px;
 }
 
 /* Table styling */
@@ -46,7 +51,7 @@ body {
   border-collapse: collapse;
   width: 80%;
   max-width: 900px;
-  background-color: #111; /* dark table background */
+  background-color: #111;
   color: #fff;
 }
 
@@ -81,39 +86,35 @@ button {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Enlarge button */
+/* Action buttons */
 .buttonEnLarge {
-  background-color: #007bff; /* blue */
+  background-color: #007bff;
   color: #fff;
 }
-
 .buttonEnLarge:hover {
   background-color: #0056b3;
   transform: scale(1.05);
 }
 
-/* Edit button */
 .buttonEdit {
-  background-color: #ffc107; /* amber/yellow */
+  background-color: #ffc107;
   color: #000;
 }
-
 .buttonEdit:hover {
   background-color: #e0a800;
   transform: scale(1.05);
 }
 
-/* Delete button */
 .buttonDelete {
-  background-color: #dc3545; /* red */
+  background-color: #dc3545;
   color: #fff;
 }
-
 .buttonDelete:hover {
   background-color: #a71d2a;
   transform: scale(1.05);
 }
 
+/* Dialog overlay */
 .dialog-overlay {
   position: fixed;
   top: 0;
@@ -136,36 +137,6 @@ button {
   min-width: 300px;
 }
 
-.dialog-actions {
-  display: flex;
-  justify-content: center;
-  margin-top: 15px;
-}
-
-.dialog-button {
-  padding: 8px 16px;
-  margin: 0 8px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.dialog-button.delete {
-  background: #dc3545;
-  color: #fff;
-}
-
-.dialog-button.cancel {
-  background: #6c757d;
-  color: #fff;
-}
-
-.dialog-button:hover {
-  opacity: 0.9;
-}
-
-
-
 .dialog-form {
   display: flex;
   flex-direction: column;
@@ -184,11 +155,14 @@ button {
   border-radius: 4px;
   border: 1px solid #555;
   margin-top: 4px;
+  background: #2a2a2a;
+  color: #fff;
 }
 
 .dialog-actions {
   display: flex;
   justify-content: flex-end;
+  margin-top: 15px;
 }
 
 .dialog-button {
@@ -198,18 +172,99 @@ button {
   border-radius: 4px;
   cursor: pointer;
 }
-
 .dialog-button.save {
   background: #28a745;
   color: #fff;
 }
-
+.dialog-button.delete {
+  background: #dc3545;
+  color: #fff;
+}
 .dialog-button.cancel {
   background: #6c757d;
   color: #fff;
 }
-
 .dialog-button:hover {
   opacity: 0.9;
 }
 
+/* Shared form containers */
+.register-container,
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #121212;
+}
+
+.register-form,
+.login-form {
+  background: #1e1e1e;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 320px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.register-form h2,
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #f5f5f5;
+}
+
+.register-form label,
+.login-form label {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.register-form input,
+.login-form input {
+  margin-top: 0.25rem;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 4px;
+  background: #2a2a2a;
+  color: #fff;
+}
+
+.register-form input:focus,
+.login-form input:focus {
+  outline: 2px solid #4cafef;
+}
+
+.register-form button,
+.login-form button {
+  margin-top: 1rem;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 4px;
+  background: #4cafef;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.register-form button:hover,
+.login-form button:hover {
+  background: #3a9bdc;
+}
+
+/* Login-specific options */
+.login-options {
+  margin-top: 0.8rem;
+  font-size: 0.85rem;
+  color: #ccc;
+}
+.login-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
