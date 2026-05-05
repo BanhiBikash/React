@@ -9,7 +9,7 @@ const apiClient = axios.create({baseURL: API_BASE_URL,
 })
 
 const citiesService =(token)=> ({
-    getAll : async ()=>{const response = await apiClient.get("v1/cities", {headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }}); return response},
+    getAll : async ()=>{const response = await apiClient.get("v1/cities", {headers: { Authorization: `Bearer ${token}` }}); return response},
     getByID : async(id)=>{const response = await apiClient.get("v1/cities/"+id, {headers: { Authorization: `Bearer ${token}` }}); return response},
     postData : async(formData)=>{const response = await apiClient.post("v1/cities",formData, {headers: { Authorization: `Bearer ${token}` }}); return response},
     deleteByID : async(id)=>{const response = await apiClient.delete("v1/cities/"+id, {headers: { Authorization: `Bearer ${token}` }}); return response},
