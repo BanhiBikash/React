@@ -13,6 +13,7 @@ function Login(props) {
 
     if(response.status==200 || response.status==201){
         console.log("loggedIn")
+        console.log(response.data.token)
         localStorage.setItem("token",response.data.token)
         props.setToken(response.data.token)
         setDialogConfig({message:"Loggedin Successfully", type:"notfound", onCancel:()=>{setDialogConfig(null)}})

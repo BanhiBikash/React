@@ -28,7 +28,7 @@ function App() {
             {login && <Login setToken={setToken} setLogin={setLogin} />}
             <Navbar setRegister={setRegister} token={token} setToken={setToken} setLogin={setLogin}/>
             {register && <Register setToken={setToken} setRegister={setRegister} />}
-            <CityTable setDialogConfig={setDialogConfig} dialog={dialogConfig} />
+            <CityTable token={token} setDialogConfig={setDialogConfig} dialog={dialogConfig} />
         </>
     )
 }

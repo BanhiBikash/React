@@ -22,7 +22,7 @@ function CityTable(prop) {
         localStorage.getItem("token")?console.log("loggedin"):console.log("loggedout")
         try {
             console.log('fetching...')
-            const response = await citiesService.getAll();
+            const response = await citiesService(prop.token).getAll();
             renderData(response.data);
         } catch (e) {
             console.error("Error fetching data:", e);
@@ -38,14 +38,14 @@ function CityTable(prop) {
     //get single city
     const getByID = async (id) => {
         console.log("getting By Id" + id)
-        const response = await citiesService.getByID(id);
+        const response = await citiesService(prop.token).getByID(id);
         //giving in array form
         renderData([response.data])
     }
 
     //delete by ID
     const deleteByID = async (id) => {
-        const response = await citiesService.getByID(id)
+        const response = await citiesService(prop.token).getByID(id)
 
         if (response.data == null) //No city data found
         {
@@ -61,12 +61,12 @@ function CityTable(prop) {
                 message: "Are you sure you want to delete this city?", type: "confirm",
                 onCancel: () => { prop.setDialogConfig(null) },
                 onConfirm: async () => {
-                    const responseDelete = await citiesService.deleteByID(id)
+                    const responseDelete = await citiesService(prop.token).deleteByID(id)
                     console.log(responseDelete)
                     //check if deleted
                     if (responseDelete.status === 200 || responseDelete.status === 204) {    //city deleted
                         prop.setDialogConfig({ message: "City successfully deleted", type: "notfound", onCancel: () => { prop.setDialogConfig(null) } })
-                        const reloadResponse = await citiesService.getAll();
+                        const reloadResponse = await citiesService(prop.token).getAll();
                         renderData(reloadResponse.data)
                     } else {    //city not deleted
                         prop.setDialogConfig({ message: "City not deleted", type: "notfound", onCancel: () => { prop.setDialogConfig(null) } })
@@ -90,7 +90,7 @@ function CityTable(prop) {
     const handleUpdate = async (event) => {
         console.log("edit start")
         event.preventDefault()
-        const response = await citiesService.putByID(formData.cityId, formData);
+        const response = await citiesService(prop.token).putByID(formData.cityId, formData);
         console.log(response.status)
         if (response.status === 200 || response.status === 204) {
             setEditDialog(false)
