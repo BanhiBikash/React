@@ -30,7 +30,8 @@ const [dialogConfig, setDialogConfig] = useState(null);
 
     if(response.status == 200 || response.status ==204){
       console.log(response.data)
-      localStorage.setItem("token",response.data.token)
+        localStorage.setItem("token",response.data.token)
+      localStorage.setItem("RefreshToken",response.data.refreshToken)
       props.setToken(localStorage.getItem("token"))
         setDialogConfig({message:`${formData.email} registered successfully`, type:"notfound",onCancel:()=>{setDialogConfig(null); props.setRegister(null)}})
     }

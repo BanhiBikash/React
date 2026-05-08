@@ -13,10 +13,11 @@ function Login(props) {
 
     if(response.status==200 || response.status==201){
         console.log("loggedIn")
-        console.log(response.data.token)
+        console.log(response.data)
         localStorage.setItem("token",response.data.token)
+        localStorage.setItem("RefreshToken",response.data.refreshToken)
         props.setToken(response.data.token)
-        setDialogConfig({message:"Loggedin Successfully", type:"notfound", onCancel:()=>{setDialogConfig(null)}})
+        props.setLogin(false)
     }else{   console.log("failed")      
         setDialogConfig({message:"Login unsuccessfull", type:"notfound", onCancel:()=>{setDialogConfig(null)}})
     }
@@ -32,11 +33,11 @@ function Login(props) {
 
   return (
     <>
-    {/* {dialog && <WarningDialog message={dialogConfig.message}
+    {dialogConfig && <WarningDialog message={dialogConfig.message}
                     type={dialogConfig.type}
                     onConfirm={dialogConfig.onConfirm}
                     onCancel={dialogConfig.onCancel} />
-    } */}
+    }
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
         <h2>Login</h2>
